@@ -643,19 +643,6 @@
             border-radius: 12px;
         }
 
-        @media (max-width: 900px) {
-            .case-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-
-            .case-card { padding: 32px; }
-            .case-card-inner { grid-template-columns: 1fr; gap: 24px; }
-            .case-card-inner.img-left { direction: ltr; }
-            .case-results { flex-wrap: wrap; }
-
-            .case-dashboard iframe { height: 500px; }
-        }
 
         /* ============ FOUNDER ============ */
         .founder-section {
@@ -733,19 +720,6 @@
 
         .founder-cta {
             margin-top: 36px;
-        }
-
-        @media (max-width: 900px) {
-            .founder-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-            }
-
-            .founder-image-wrapper {
-                max-width: 320px;
-                margin: 0 auto;
-            }
         }
 
         /* ============ CTA SECTION ============ */
@@ -914,35 +888,178 @@
             color: var(--text-muted);
         }
 
-        /* ============ MOBILE ============ */
-        @media (max-width: 900px) {
-            .services-grid,
-            .process-grid,
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
+        /* ============ MOBILE NAV ============ */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 8px;
+        }
 
+        .mobile-nav-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 200;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .mobile-menu a.btn-primary {
+            color: #0a0a0a;
+            font-weight: 700;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-close svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* ============ LARGE SCREENS ============ */
+        @media (min-width: 1400px) {
+            .container { max-width: 1320px; }
+            .hero h1 { font-size: 88px; }
+            .testimonials-grid { gap: 28px; }
+            .services-grid { gap: 28px; }
+        }
+
+        /* ============ TABLET (max 900px) ============ */
+        @media (max-width: 900px) {
             .nav-links { display: none; }
+            .mobile-nav-toggle { display: block; }
+
+            .services-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
+            .testimonials-grid { grid-template-columns: 1fr 1fr; }
+            .testimonials-grid .testimonial-card:last-child { grid-column: 1 / -1; max-width: 60%; margin: 0 auto; }
+
+            .section { padding: 80px 0; }
+
+            .hero { padding: 160px 0 60px; }
+            .hero h1 { font-size: 48px; letter-spacing: -1.5px; }
+            .hero-sub { font-size: 16px; }
+
+            .section-title { font-size: 32px; }
+
+            #testimonials { padding-top: 60px; padding-bottom: 60px; }
+            #testimonials .section-title { font-size: 26px; }
+
+            .case-card { padding: 32px; }
+            .case-card-inner { grid-template-columns: 1fr; gap: 24px; }
+            .case-card-inner.img-left { direction: ltr; }
+            .case-results { flex-wrap: wrap; gap: 20px; }
+            .case-card h3 { font-size: 20px; }
+
+            .founder-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .founder-image-wrapper { max-width: 320px; margin: 0 auto; }
+            .founder-cta { justify-content: center !important; }
+
+            .cta-box { padding: 48px 28px; }
+            .cta-box h2 { font-size: 32px; }
 
             .footer-content {
                 flex-direction: column;
                 gap: 24px;
                 text-align: center;
             }
-
             .footer-left {
                 flex-direction: column;
                 gap: 16px;
             }
-
-            .cta-box { padding: 48px 28px; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
         }
 
+        /* ============ SMALL PHONES (max 600px) ============ */
         @media (max-width: 600px) {
+            .container { padding: 0 16px; }
+
             .hero { padding: 130px 0 40px; }
-            .section { padding: 80px 0; }
+            .hero h1 { font-size: 36px; letter-spacing: -1px; }
+            .hero-sub { font-size: 15px; max-width: 100%; }
             .hero-ctas { flex-direction: column; }
             .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+
+            .section { padding: 60px 0; }
+            .section-title { font-size: 28px; letter-spacing: -1px; }
+
+            #testimonials { padding-top: 40px; padding-bottom: 40px; }
+            #testimonials .section-title { font-size: 22px; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .testimonials-grid .testimonial-card:last-child { max-width: 100%; }
+            .testimonial-card { padding: 28px; }
+            .testimonial-text { font-size: 14px; }
+
+            .case-card { padding: 24px; margin-top: 20px; }
+            .case-card h3 { font-size: 18px; }
+            .case-results { gap: 16px; }
+            .case-result .value { font-size: 24px; }
+            .case-label { font-size: 11px; }
+            .case-client-logo { height: 24px !important; }
+
+            .founder-section { padding-top: 60px; padding-bottom: 60px; }
+            .founder-content h3 { font-size: 28px; }
+            .founder-text { font-size: 15px; }
+            .founder-image-wrapper { max-width: 260px; }
+
+            .service-card { padding: 28px; }
+            .service-card h3 { font-size: 18px; }
+            .service-card p { font-size: 14px; }
+
+            .process-step { padding: 28px 24px; }
+            .step-number { font-size: 48px; }
+            .process-step h3 { font-size: 18px; }
+
+            .cta-section { padding: 40px 0 20px; }
+            .cta-box { padding: 36px 20px; }
+            .cta-box h2 { font-size: 26px; letter-spacing: -1px; }
+            .cta-box p { font-size: 15px; }
+
+            .faq-question { font-size: 15px; padding: 20px 0; }
+            .faq-answer p { font-size: 14px; }
+
+            footer { padding: 40px 0; }
+            .footer-logo { font-size: 18px; }
+            .footer-links { gap: 16px; }
+            .footer-links a { font-size: 13px; }
         }
     </style>
 </head>
@@ -960,8 +1077,24 @@
                 <li><a href="https://www.linkedin.com/in/thomas-tzouridis-7b6914306/" target="_blank">LinkedIn</a></li>
                 <li><a href="https://calendly.com/thomas-aementum/discovery-call-30-min" class="btn-primary">Book a Call</a></li>
             </ul>
+            <button class="mobile-nav-toggle" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" aria-label="Close menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <a href="#services" class="mobile-menu-link">Services</a>
+        <a href="#process" class="mobile-menu-link">Process</a>
+        <a href="#testimonials" class="mobile-menu-link">Results</a>
+        <a href="#faq" class="mobile-menu-link">FAQ</a>
+        <a href="https://www.linkedin.com/in/thomas-tzouridis-7b6914306/" target="_blank" class="mobile-menu-link">LinkedIn</a>
+        <a href="https://calendly.com/thomas-aementum/discovery-call-30-min" class="btn-primary">Book a Call</a>
+    </div>
 
     <!-- HERO -->
     <section class="hero">
@@ -1271,7 +1404,25 @@
         </div>
     </footer>
 
-    <!-- FAQ Toggle Script -->
+    <!-- Mobile Menu + FAQ Toggle Script -->
+    <script>
+        // Mobile menu
+        const mobileMenu = document.getElementById('mobileMenu');
+        document.querySelector('.mobile-nav-toggle').addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+        document.querySelector('.mobile-menu-close').addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+    </script>
     <script>
         document.querySelectorAll('.faq-question').forEach(btn => {
             btn.addEventListener('click', () => {
