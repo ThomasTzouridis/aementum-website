@@ -639,13 +639,24 @@
             position: relative;
         }
 
+        .founder-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: var(--radius);
+        }
+
 
         .founder-image {
             width: 100%;
             aspect-ratio: 3/4;
             object-fit: cover;
             object-position: top;
-            border-radius: 0;
+            border-radius: var(--radius);
             display: block;
             position: relative;
             z-index: 1;
