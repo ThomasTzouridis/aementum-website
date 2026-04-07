@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /casestudy-nkm-preview.html
+
+Sitemap: https://aementum.com/sitemap.xml
