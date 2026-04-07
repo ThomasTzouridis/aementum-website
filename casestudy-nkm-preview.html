@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>NK-Media Case Study Preview — Aementum</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,11 +13,13 @@
             --bg-primary: #0a0a0a;
             --bg-secondary: #111111;
             --bg-card: #161616;
+            --bg-card-hover: #1a1a1a;
             --text-primary: #ffffff;
             --text-secondary: #a0a0a0;
             --text-muted: #666666;
             --accent: #c8ff00;
             --accent-dim: rgba(200, 255, 0, 0.1);
+            --accent-glow: rgba(200, 255, 0, 0.15);
             --border: #222222;
             --radius: 16px;
             --radius-sm: 10px;
@@ -29,7 +32,7 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
         .preview-banner {
             background: #1a1400;
@@ -39,141 +42,124 @@
             font-size: 14px;
             color: var(--accent);
             font-weight: 600;
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
 
-        .hero {
-            padding: 100px 0 60px;
-            text-align: center;
-        }
-        .hero .label {
-            display: inline-block;
-            background: var(--accent-dim);
-            color: var(--accent);
-            padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .hero h1 {
+        .section { padding: 80px 0; }
+        .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 5vw, 56px);
-            line-height: 1.15;
-            margin-bottom: 20px;
-        }
-        .hero h1 em {
-            color: var(--accent);
-            font-style: italic;
-        }
-        .hero .subtitle {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 8px;
         }
 
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin: 60px 0;
-        }
-        .result-card {
+        .case-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 32px 24px;
-            text-align: center;
+            padding: 48px;
+            margin-top: 32px;
         }
-        .result-card .value {
-            font-size: 48px;
+        .case-card-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .case-card-img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            object-fit: cover;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+        }
+        .case-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .case-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        .case-card p {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .case-results {
+            display: flex;
+            gap: 32px;
+            margin-top: 24px;
+        }
+        .case-result { text-align: center; }
+        .case-result .value {
+            font-size: 28px;
             font-weight: 800;
             color: var(--accent);
-            line-height: 1;
-            margin-bottom: 8px;
+            letter-spacing: -1px;
         }
-        .result-card .desc {
-            font-size: 14px;
-            color: var(--text-secondary);
-            font-weight: 500;
+        .case-result .desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
         }
-
-        .section { padding: 60px 0; }
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            margin-bottom: 20px;
+        .case-client-logo {
+            height: 30px;
+            opacity: 0.7;
+            filter: brightness(0) invert(1);
         }
-        .section p {
-            color: var(--text-secondary);
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-
-        .quote-block {
-            background: var(--bg-card);
-            border-left: 4px solid var(--accent);
-            border-radius: 0 var(--radius) var(--radius) 0;
-            padding: 32px;
-            margin: 40px 0;
-        }
-        .quote-block blockquote {
-            font-size: 20px;
-            font-style: italic;
-            color: var(--text-primary);
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-        .quote-block .attribution {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        .screenshot-placeholder {
+        .img-placeholder {
             width: 100%;
-            height: 300px;
+            height: 220px;
             background: var(--bg-secondary);
             border: 2px dashed var(--border);
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 16px;
-            margin: 32px 0;
-        }
-
-        .logo-placeholder {
-            width: 200px;
-            height: 80px;
-            background: var(--bg-secondary);
-            border: 2px dashed var(--border);
-            border-radius: var(--radius-sm);
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
             font-size: 14px;
-            margin: 0 auto 40px;
+        }
+        .logo-placeholder {
+            height: 30px;
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            opacity: 0.7;
         }
 
         .footer-note {
             text-align: center;
-            padding: 60px 24px;
+            padding: 40px 24px;
             color: var(--text-muted);
             font-size: 13px;
             border-top: 1px solid var(--border);
         }
+        .footer-note a { color: var(--accent); }
 
+        @media (max-width: 900px) {
+            .case-card { padding: 32px; }
+            .case-card-inner { grid-template-columns: 1fr; gap: 24px; }
+            .case-results { flex-wrap: wrap; gap: 20px; }
+            .case-card h3 { font-size: 20px; }
+            .section-title { font-size: 32px; }
+        }
         @media (max-width: 600px) {
-            .results-grid { grid-template-columns: 1fr; gap: 16px; }
-            .result-card .value { font-size: 36px; }
+            .case-card { padding: 24px; }
+            .case-card h3 { font-size: 18px; }
+            .case-results { gap: 16px; }
+            .case-result .value { font-size: 24px; }
+            .case-label { font-size: 11px; }
+            .section-title { font-size: 26px; }
         }
     </style>
 </head>
@@ -182,69 +168,45 @@
         PREVIEW — This page is not public. For approval purposes only.
     </div>
 
-    <section class="hero">
-        <div class="container">
-            <div class="label">Digital Agency</div>
-            <div class="logo-placeholder">[NK-Media Logo]</div>
-            <h1>Case Study: <em>NK-Media</em></h1>
-            <p class="subtitle">[Short description of the partnership and what was achieved — pending details from Thomas]</p>
-        </div>
-    </section>
-
     <section class="section">
         <div class="container">
-            <div class="results-grid">
-                <div class="result-card">
-                    <div class="value">[X]</div>
-                    <div class="desc">Meetings Booked</div>
-                </div>
-                <div class="result-card">
-                    <div class="value">[X%]</div>
-                    <div class="desc">Reply Rate</div>
-                </div>
-                <div class="result-card">
-                    <div class="value">[X]</div>
-                    <div class="desc">[Metric TBD]</div>
+            <h2 class="section-title">See the numbers</h2>
+
+            <!-- NK-Media Case Study — same layout as live site -->
+            <div class="case-card">
+                <div class="case-card-inner">
+                    <div>
+                        <div class="case-label">[Industry / Category]</div>
+                        <h3>[Headline — e.g. "X Meetings Booked in Y Weeks"]</h3>
+                        <p>[Description of the partnership — what NK-Media needed, what we did, and what happened. 2-3 sentences.]</p>
+                        <div class="case-results">
+                            <div class="case-result">
+                                <div class="value">[X]</div>
+                                <div class="desc">Meetings Booked</div>
+                            </div>
+                            <div class="case-result">
+                                <div class="value">[X%]</div>
+                                <div class="desc">Reply Rate</div>
+                            </div>
+                            <div class="case-result">
+                                <div class="value">[X]</div>
+                                <div class="desc">[Metric]</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div class="logo-placeholder" style="justify-content:center;margin-bottom:16px;">[NK-Media Logo]</div>
+                        <div class="img-placeholder">[Campaign screenshot]</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">The Challenge</h2>
-            <p>[What was the situation before working with Aementum? What challenges did NK-Media face with outbound/lead generation?]</p>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">The Approach</h2>
-            <p>[What strategy did we implement? Targeting, messaging, infrastructure — the key decisions that made the difference.]</p>
-            <div class="screenshot-placeholder">[Campaign screenshot / dashboard results]</div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title">The Results</h2>
-            <p>[Detailed breakdown of the outcomes. Hard numbers, timeline, quality of leads.]</p>
-            <div class="screenshot-placeholder">[Results screenshot / metrics]</div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="quote-block">
-                <blockquote>"[Quote from Max — pending approval]"</blockquote>
-                <div class="attribution">— Max [Last Name], [Title], NK-Media</div>
-            </div>
         </div>
     </section>
 
     <div class="footer-note">
-        This is a preview page for NK-Media's review only. Not indexed, not linked.<br>
-        Once approved, this content will appear on <a href="https://aementum.com" style="color:var(--accent);">aementum.com</a> as the flagship case study.
+        Preview for NK-Media's review only. Not indexed, not linked.<br>
+        Once approved, this will appear as the top case study on <a href="https://aementum.com">aementum.com</a>
     </div>
 </body>
 </html>
